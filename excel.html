@@ -1,0 +1,78 @@
+    <!DOCTYPE html>
+    <html>
+        <head>
+    <title>
+        matrix generator
+    </title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+       </head>
+       <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            background-color: #f4f4f4;
+        }
+        form {
+            margin-bottom: 20px;
+        }
+        input, button {
+            padding: 8px;
+            font-size: 16px;
+            margin-right: 5px;
+        }
+        table {
+            border-collapse: collapse; 
+            margin-top: 20px;
+        }
+        td {
+            border: 1px solid black; 
+            width: 100px; 
+            height: 50px; 
+            text-align: center;
+            vertical-align: middle;
+        }
+        td[contenteditable="true"] {
+            background-color: #f9f9f9; 
+            outline: none; 
+        }
+        td[contenteditable="true"]:focus {
+            background-color: #e7f3ff; 
+        }
+    </style>
+       <body>
+        <h1> Matrices Generator</h1>
+        <form id="tableform">
+<label for="number">Enter number:</label>
+<input type="number"id="number"name="number" required>
+<button type="submit">generator</button>
+        </form>
+        <div id="tableContainer"></div>
+        <script>
+document.getElementById("tableform").addEventListener("submit",function(event){
+event.preventDefault();
+let n=parseInt(document.getElementById("number").value);
+let tableContainer=document.getElementById("tableContainer");
+tableContainer.innerHTML="";
+if(n>0){
+    let table=document.createElement("table");
+    for(let i=0;i<n;i++){
+        let row=document.createElement("tr");
+    
+    for(let j=1;j<=n;j++){
+        let cell=document.createElement("td");
+        cell.innerHTML=String(i*n+j);
+        row.appendChild(cell);
+    }
+    table.appendChild(row);
+}
+tableContainer.appendChild(table);
+            }});
+        </script>
+       </body>
+       </html>
